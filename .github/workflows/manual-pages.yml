@@ -1,0 +1,46 @@
+name: Publicar manual en Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Configurar Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+      - name: Construir el sitio
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}/
+        run: python -m mkdocs build --strict -f mkdocs.yml
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  publicar:
+    needs: construir
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v5

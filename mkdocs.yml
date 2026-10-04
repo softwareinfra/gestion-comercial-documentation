@@ -1,0 +1,93 @@
+site_name: Manual de usuario G5-Service
+# Define SITE_URL al construir; ejemplo: https://organizacion.github.io/manual/
+site_url: !ENV [SITE_URL, '']
+docs_dir: docs
+site_dir: site
+theme:
+  name: material
+  language: es
+  features:
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+plugins:
+  - search:
+      lang: es
+markdown_extensions:
+  - tables
+  - attr_list
+  - toc:
+      permalink: true
+      slugify: !!python/name:markdown.extensions.toc.slugify_unicode
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Inicio: index.md
+  - General:
+      - General: general/index.md
+      - "Primeros pasos: ingresar, salir y mantener tu sesión": general/primeros-pasos.md
+      - "Menú lateral y navegación": general/menu-y-navegacion.md
+      - "Listados: buscar, filtrar y pasar de página": general/listados-filtros-y-paginacion.md
+      - "Filtros guardados y filtros recordados": general/filtros-guardados.md
+      - "Formularios y acciones comunes: crear, editar, deshabilitar y anular": general/formularios-y-acciones-comunes.md
+      - "Exportar a Excel e imprimir": general/exportar-e-imprimir.md
+      - "Roles y permisos": general/roles-y-permisos.md
+  - Administración:
+      - Administración: administracion/index.md
+      - "Usuarios": administracion/usuarios.md
+      - "Detalle de un usuario y sus permisos": administracion/usuario-detalle-y-permisos.md
+      - "Ciudades": administracion/ciudades.md
+      - "Sucursales": administracion/sucursales.md
+      - "Proveedores": administracion/proveedores.md
+      - "Entidades financieras": administracion/entidades-financieras.md
+      - "Marcas": administracion/marcas.md
+      - "Tipos de producto": administracion/tipos-de-producto.md
+      - "Referencias": administracion/referencias.md
+      - "Sistemas operativos": administracion/sistemas-operativos.md
+      - "Categorías de equipo": administracion/categorias-de-equipo.md
+      - "Medios de pago": administracion/medios-de-pago.md
+      - "Categorías de caja": administracion/categorias-de-caja.md
+      - "Estados operativos": administracion/estados-operativos.md
+  - Inventario:
+      - Inventario: inventario/index.md
+      - "Equipos": inventario/equipos.md
+      - "Ficha del equipo": inventario/equipo-detalle.md
+      - "Precios y parámetros": inventario/precios.md
+      - "Imprimir inventario": inventario/imprimir-inventario.md
+      - "Registrar y consultar ingresos": inventario/ingresos.md
+      - "Trasladar equipos entre sedes": inventario/traslados.md
+  - Ventas:
+      - Ventas: ventas/index.md
+      - "Cómo registrar una venta": ventas/nueva-venta.md
+      - "Cómo consultar ventas y registrar abonos": ventas/ventas.md
+      - "Cómo imprimir el comprobante de venta": ventas/comprobante-de-venta.md
+      - "Cómo solicitar y resolver cambios de una venta": ventas/solicitudes.md
+      - "Cómo consultar y publicar topes de descuento": ventas/topes-de-descuento.md
+      - "Cómo consultar y publicar el texto de aceptación": ventas/texto-de-aceptacion.md
+      - "Cómo consultar y registrar movimientos de caja": ventas/caja.md
+      - "Cómo cuadrar la caja del día": ventas/cuadres-de-caja.md
+      - "Cómo pedir y resolver una rectificación de cuadre": ventas/solicitudes-de-cuadre.md
+  - Garantías:
+      - Garantías: garantias/index.md
+      - "Cómo atender un equipo en garantía": garantias/equipos-en-garantia.md
+  - Metas:
+      - Metas: metas/index.md
+      - "Cómo crear y consultar metas comerciales": metas/metas.md
+  - Dashboard:
+      - Dashboard: dashboard/index.md
+      - "Cómo consultar el tablero de ventas": dashboard/tablero-de-ventas.md
+      - "Cómo consultar el tablero de inventario": dashboard/tablero-de-inventario.md
+      - "Cómo comparar metas en un informe": dashboard/informe-de-metas.md
+      - "Cómo consultar créditos y cortes por financiera": dashboard/informe-de-financieras.md
+  - Flujos:
+      - Flujos: flujos/index.md
+      - "Del ingreso de mercancía a la venta": flujos/del-ingreso-a-la-venta.md
+      - "Modificar o anular una venta": flujos/modificar-o-anular-una-venta.md
+      - "Cuadre de caja del día": flujos/cierre-de-caja-del-dia.md
+      - "Atender una garantía": flujos/atender-una-garantia.md
+      - "Puesta en marcha de una sucursal": flujos/puesta-en-marcha-de-una-sucursal.md
+      - "Metas e informes": flujos/metas-e-informes.md
